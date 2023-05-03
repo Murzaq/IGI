@@ -31,7 +31,7 @@ def task_one():
             print("You enter wrong value, so k is default!")
             k = K
         else:
-            k = int(k)
+            k = int(k)        
 
         n = input("Enter n value:")
         if(not n.isdigit()):
