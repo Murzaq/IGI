@@ -38,20 +38,20 @@ def task_two():
         try:
             command = input('>>> ')
 
-            if(re.search("^add <(.+)>$",command)):
-                container.add(re.search("<(.+)>",command)[1])
-
-            elif(re.search("^add \[(.+)\]$",command)):
+            if(re.search("^add \[(.+)\]$",command)):
                 container.add_list(re.search("\[(.+)\]",command)[1].split(','))
 
-            elif(re.search("^remove <(.+)>$",command)):
-                container.remove(re.search("<(.+)>",command)[1])
+            elif(re.search("^add (.+)$",command)):
+                container.add(re.search("add (.+)",command)[1])
 
-            elif(re.search("^find <(.+)>$",command)):
-                print(container.find(re.search("^find <(.+)>$",command)[1]))
+            elif(re.search("^remove (.+)$",command)):
+                container.remove(re.search("remove (.+)",command)[1])
 
             elif(re.search("^find \[(.+)\]$",command)):
                 print(*container.find_list(re.search("\[(.+)\]",command)[1].split(',')))
+
+            elif(re.search("^find (.+)$",command)):
+                print(container.find(re.search("^find (.+)$",command)[1]))
 
             elif(re.search("^list$",command)):
                 if(len(container.currentContainer)):
@@ -59,14 +59,14 @@ def task_two():
                 else:
                     print("Container is empty")
 
-            elif(re.search("^grep <(.+)>$",command)):
-                print(*container.grep(re.search("<(.+)>",command)[1]))
+            elif(re.search("^grep (.+)$",command)):
+                print(*container.grep(re.search("grep (.+)",command)[1]))
 
             elif(re.search("^save$",command)):
                 container.save(container.containersFile)
 
-            elif(re.search("^load <(.+)>$",command)):
-                tempDirection = re.search("<(.+)>",command)[1]
+            elif(re.search("^load (.+)$",command)):
+                tempDirection = re.search("load (.+)",command)[1]
                 if(container.load(tempDirection)):
                     container.containersFile = tempDirection
                     if(container.loadedContainers[container.username]):
@@ -74,9 +74,9 @@ def task_two():
                     else:
                         print("There is no container with current username, data in current container wasn't updated")
 
-            elif(re.search("^switch <(.+)>$",command)):
+            elif(re.search("^switch (.+)$",command)):
                 container.propose_to_save()
-                container.switch(re.search("<(.+)>",command)[1])
+                container.switch(re.search("switch (.+)",command)[1])
 
             else:
                 raise Exception("Wrong command or format")

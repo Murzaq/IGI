@@ -56,7 +56,6 @@ class Container:
         option = input("\tWhould you like to save current container before switching users?\n\tY/N:")
         if(option=='Y'):
             print("\tFile was saved")
-            self.loadedContainers[self.username]=list(self.currentContainer)
             self.save(self.containersFile)
 
     def load(self, direction):
@@ -69,6 +68,7 @@ class Container:
             return True
     
     def switch(self, user):
+        self.username = user
         if(user in self.loadedContainers.keys()):
             self.currentContainer = set(self.loadedContainers[user])
         else:

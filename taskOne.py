@@ -3,28 +3,15 @@ from constants import K,N
 from texts import TEXTS
 
 def task_one():
-    option = input("Choose option:\n\t1)One of the prepeared texts\n\t2)Your text\n\nInput option:")
-    if option=="1":
-        textNum = input("Choose text number:1-3\n\nInput number:")
-        if(textNum.isdigit() and int(textNum)>0 and int(textNum) <= len(TEXTS)):
-            text = text_check(TEXTS[int(textNum)-1])
-        else:
-            print("You choosed wrong text, so text is default!")
-            text = text_check(TEXTS[0])
-    elif option == "2":
-        text = input("Input the text:")
-        if(text.isdigit() or len(text)==0):
-            print("You enter wrong text, so text is default!")
-            text = text_check(TEXTS[0])
-    else:
-        print("You enter wrong option, so text is default!")
+    text = input("Input the text:")
+    if(text.isdigit() or len(text)==0):
+        print("You enter wrong text, so text is default!")
         text = text_check(TEXTS[0])
 
-    option = input("Choose option:\n\t1)Default k and n values (k = 10, n = 4)\n\t2)Your own values\n\nInput option:")
+    option = input("Choose option:\n1)Default k and n values (k = 10, n = 4)\n2)Your own values\nInput option:")
     if option=="1":
         k = K
         n = N
-
     elif option == "2":
         k = input("Enter k value:")
         if not k.isdigit():

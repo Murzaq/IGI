@@ -38,7 +38,7 @@ def average_words_length(text:str):
     return((textLen-len(findall("[\s,\.!?]{1}", text)))/len(words))
 
 def top_ngramm(text:str,n:int,k:int):
-    words = split('[,\.\s!?]+',text);
+    words = split('[,\.\s!?]+',text)
     n_gramms = {}
     top_ngramms = {}
 
@@ -48,7 +48,7 @@ def top_ngramm(text:str,n:int,k:int):
             continue
 
         if(len(word)>=n):
-            for i in range (0,len(word)-n):
+            for i in range (0,len(word)-n+1):
                 n_gramms[word[i:i+n]] = n_gramms.get(word[i:i+n], 0) + 1
 
     top_ngramms = sorted(n_gramms.items(), key = lambda x: x[1], reverse = True)[:k]
