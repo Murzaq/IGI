@@ -1,6 +1,4 @@
-# simple types
-import math
-
+# primitive types
 a = 1
 aa = -1
 b = 1.2
@@ -17,10 +15,6 @@ list1 = [1, 2]
 list2 = ['1', 2]
 list3 = [complex(2, 3), 1, '1', True, 0.9, None]
 
-set1 = {1, 2, 3}
-set2 = {'1', 2, 3}
-set3 = {complex(2, 3), 1, '1', True, 0.9, None}
-
 tuple1 = (1, 2, 3)
 tuple2 = (1, '2')
 tuple3 = (complex(2, 3), 1, '1', True, 0.9, None)
@@ -31,12 +25,13 @@ dict1 = {1: 2, 2: 3}
 dict2 = {1: '1', 2: '2'}
 
 dict3 = {1: [1, 2], 2: (1, 2), 3: '3', 4: False}
-dict4 = {1: [1, 2, (3, 4, {5, 6, '7', False})], 2: (1, (2, (3, (4, (5, (6, (7)))))))}
-dict5 = {(1, (2, (3, (4, (5, (6)))))): (7, (8, (9, (10, (12))))), \
-         (1, ('2', (True, (None, (complex(2, 3), (6.9)))))): (1, (1, (1, (2, {2, (2, (5,))}))))}
-
+dict4 = {1: [1, 2, (3, 4)],
+         2: (1, (2, (3, (4, (5, (6, (7)))))))}
+dict5 = {(1, (2, (3, (4, (5, (6)))))): (7, (8, (9, (10, (12))))),
+         (1, ('2', (True, (None, (complex(2, 3), (6.9)))))): (1, (1, (1, (2))))}
 
 # funcs
+
 
 def func1():
     return 8
@@ -48,16 +43,13 @@ def func2(a):
 
 def func3(*a):
     sum = 0
-
     for tmp in a:
         sum = sum + tmp
-
     return sum
 
 
 def func4(a):
     import math
-
     return math.sin(a) + math.cos(a)
 
 
@@ -68,16 +60,15 @@ def func5(arr):
 def func6(n):
     if (n == 1):
         return 1
-
-    return n * func6(n - 1)
+    return n * func6(n-1)
 
 
 def func7(n):
-    return n * func6(n - 1)
+    return n*func6(n-1)
 
 
-lambda1 = lambda a: a + 10
-lambda2 = lambda a, b, c: a + b + c
+def lambda1(a): return a + 10
+def lambda2(a, b, c): return a + b + c
 
 
 # class test
@@ -143,7 +134,7 @@ class second(first):
         pass
 
     def func(self, a):
-        return a ** a
+        return a**a
 
 
 class st:
@@ -182,23 +173,18 @@ class HardClass(HardBase):
         return func7(a)
 
 
-def deccc(func):
+def raise_if_to_many_args(func):
     def wrap(*args):
         if (len(args) > 10):
-            raise 'qwe'
+            raise ValueError("to many arguments")
 
-        return func(args)
+        return func(*args)
 
     return wrap
 
 
-def ffff(*args):
-    sum = 0
-    t = args[0]
-    for tmp in t:
-        sum += tmp
-
-    return sum
+def sum_func(*args):
+    return sum(args)
 
 
 class AAAA:
@@ -220,39 +206,3 @@ class CCCC(AAAA, BBBB):
 
     def __init__(self):
         pass
-
-class A1:
-    x = 10
-
-    def __init__(self):
-        pass
-    def my_sin(self, c):
-        return math.sin(c)
-
-    @staticmethod
-    def stat():
-        return 145
-
-    def __str__(self):
-        return 'AAAAA'
-
-    def __repr__(self):
-        return 'AAAAA'
-
-
-class B1:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-
-    @property
-    def prop(self):
-        return self.a * self.b
-
-    @classmethod
-    def class_meth(cls):
-        return math.pi
-
-
-class C1(A1, B1):
-    pass

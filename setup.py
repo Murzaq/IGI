@@ -1,17 +1,19 @@
-from setuptools import setup, find_packages
+from setuptools import setup
+
 
 setup(
-    name="Serializer-Lasevich",
-    version="0.0.1",
-    description="library for python serialization as lab",
-    url="https://github.com/Eugene-Lasevich/4semLabsIGI/tree/lab3/lab3",
-    author="Eugene Lasevich",
-    author_email="lasevich009@gmail.com",
+    name="Brigadir",
+    version="1.0",
+    description="library for python serialization",
+    url="https://github.com/Tivlas/IGI-Labs-2023/tree/lab3/lab3",
+    author="Maksim Piacherski",
+    author_email="tima051003@gmail.com",
     classifiers=[
         "Intended Audience :: Developers",
         "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent"
     ],
-    packages=["serializers/json", "serializers/dict_serilizer", "serializers/xml", "serializers"],
+    packages=["serializers/json_serializer", "serializers/src",
+              "serializers/xml_serializer", "serializers"],
     include_package_data=True
 )
