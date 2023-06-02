@@ -1,19 +1,17 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 setup(
-    name="Brigadir",
-    version="1.0",
-    description="library for python serialization",
-    url="https://github.com/Tivlas/IGI-Labs-2023/tree/lab3/lab3",
-    author="Maksim Piacherski",
-    author_email="tima051003@gmail.com",
-    classifiers=[
-        "Intended Audience :: Developers",
-        "Programming Language :: Python :: 3.10",
-        "Operating System :: OS Independent"
-    ],
-    packages=["serializers/json_serializer", "serializers/src",
-              "serializers/xml_serializer", "serializers"],
-    include_package_data=True
+    name="denvilk-serializer",
+    version="1.0.0",
+    description="JSON and XLM serializer",
+    author="Vladimir Velikovich",
+    author_email="vvelikovich@gmail.com",
+    packages=find_packages(),
+    include_package_data=True,
+    entry_points={
+        'console_scripts': [ 
+            'serializer = MySerializer.serializer:main' 
+        ],
+    },
 )

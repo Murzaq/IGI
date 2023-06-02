@@ -1,7 +1,5 @@
-from serializers.json_serializer.JsonSerializer import JsonSerializer
-from serializers.factory import SerializersFactory
 import math
-
+from MySerializer.MySerializer import MySerializer
 
 
 def my_decor(meth):
@@ -48,7 +46,7 @@ class C(A, B):
     pass
 
 
-ser = SerializersFactory.create_serializer('json')
+ser = MySerializer.createSerializer('.json')
 #
 # var = 15
 # var_ser = ser.dumps(var)
@@ -88,6 +86,11 @@ def a(x):
     yield
 
 
+d = lambda x: x*2
+
+d_ser = ser.dumps(d)
+d_des = ser.loads(d_ser)
+print(d(2))
 
 
 
